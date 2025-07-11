@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { LayoutGrid, Phone, MoreVertical } from 'lucide-react';
 import SidebarItem from '../components/SidebarItem';
 import '../index.css';
 
 function Dashboard() {
   const [stats, setStats] = useState({});
+  const navigate = useNavigate()
   const [user, setUser] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -44,17 +46,18 @@ function Dashboard() {
     fetchStats();
   }, []);
 
-  const statItems = [
-    { label: 'Всего заказов', value: stats?.order_total },
-    { label: 'Заказы в прошлом месяце', value: stats?.order_prev_month },
-    { label: 'Заказы в этом месяце', value: stats?.order_current_month },
-    { label: 'Всего пользователей', value: stats?.users_total },
-    { label: 'Пользователи в прошлом месяце', value: stats?.users_prev_month },
-    { label: 'Пользователи в этом месяце', value: stats?.users_current_month },
-    { label: 'Всего продуктов', value: stats?.products_total },
-    { label: 'Продукты в прошлом месяце', value: stats?.products_prev_month },
-    { label: 'Продукты в этом месяце', value: stats?.products_current_month },
-  ];
+const statItems = [
+  { key: 'order_total', label: 'Всего заказов', value: stats?.order_total },
+  { key: 'order_prev_month', label: 'Заказы в прошлом месяце', value: stats?.order_prev_month },
+  { key: 'order_current_month', label: 'Заказы в этом месяце', value: stats?.order_current_month },
+  { key: 'users_total', label: 'Всего пользователей', value: stats?.users_total },
+  { key: 'users_prev_month', label: 'Пользователи в прошлом месяце', value: stats?.users_prev_month },
+  { key: 'users_current_month', label: 'Пользователи в этом месяце', value: stats?.users_current_month },
+  { key: 'products_total', label: 'Всего продуктов', value: stats?.products_total },
+  { key: 'products_prev_month', label: 'Продукты в прошлом месяце', value: stats?.products_prev_month },
+  { key: 'products_current_month', label: 'Продукты в этом месяце', value: stats?.products_current_month },
+];
+
 
   const filteredItems = statItems.filter(item =>
     item.label.toLowerCase().includes(searchTerm.toLowerCase())
@@ -71,6 +74,7 @@ function Dashboard() {
           <div className="sidebar-menu">
             <SidebarItem icon={LayoutGrid} label="Статистика" to="/dashboard" />
             <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Роли и права" to="/RoleAndRoot" />
+            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Partner" to="/Partner" />
             <SidebarItem icon={() => <span style={{ fontSize: 20 }}>📱</span>} label="Панель MobileApp" to="/mobile" />
             <SidebarItem icon={Phone} label="Журнал звонков" to="/calls" />
           </div>
@@ -104,7 +108,11 @@ function Dashboard() {
         <div className="statistics_info">
           <div className="stat_cards">
             {filteredItems.map((item, index) => (
-              <div className="stat_card" key={index}>
+              <div
+                className="stat_card"
+                key={index}onClick={() => navigate(`/statistics/${item.key}`)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="stat_Header">
                   {item.label}
                   <MoreVertical />
@@ -112,6 +120,7 @@ function Dashboard() {
                 <p>{item.value ?? '—'}</p>
               </div>
             ))}
+
           </div>
         </div>
       </main>

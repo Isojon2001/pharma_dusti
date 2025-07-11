@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { LayoutGrid, Phone, Plus, Eye, Edit, Trash2 } from 'lucide-react';
-import SidebarItem from './SidebarItem';
+import SidebarItem from '../components/SidebarItem';
 import '../index.css';
 
-function RoleAndRoot() {
+function Partner() {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
 
@@ -71,11 +71,7 @@ useEffect(() => {
       <main className="content">
         <div className='root_header'>
           <div>
-            <h1>Роли и права</h1>
-            <p>Добавьте сотрудников с полными правами администратора, ограничьте доступ по разделам</p>
-          </div>
-          <div className='root_button'>
-            <button>Добавить сотрудника <Plus /></button>
+            <h1>Партнёры</h1>
           </div>
         </div>
 
@@ -83,11 +79,12 @@ useEffect(() => {
           <table className="user-table">
             <thead>
               <tr>
-                <th>Вход</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Должность</th>
+                <th>№</th>
+                <th>Ф.И.О</th>
+                <th>КонтрАгент</th>
+                <th>Адрес</th>
                 <th>Телефон</th>
+                <th>Менеджер</th>
                 <th>Действие</th>
               </tr>
             </thead>
@@ -96,11 +93,11 @@ useEffect(() => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{u['Наименование'] || '-'}</td>
-                  <td>{u['МенеджерКонтрагента'] || '-'}</td>
+                  <td>{u['ВидКонтрагента'] || '-'}</td>
                   <td>{u['БизнесРегион'] || '-'}</td>
                   <td>{u['Телефон'] || '-'}</td>
+                  <td>{u['МенеджерКонтрагента'] || '-'}</td>
                   <td style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-                    <Edit size={20} style={{ cursor: 'pointer' }} />
                     <Eye size={20} style={{ cursor: 'pointer' }} />
                     <Trash2 size={20} color="red" style={{ cursor: 'pointer' }} />
                   </td>
@@ -114,4 +111,4 @@ useEffect(() => {
   );
 }
 
-export default RoleAndRoot;
+export default Partner;

@@ -65,7 +65,7 @@ function AddCategoryPage() {
       </div>
       <div className="add-category-form">
         <div className='category-paragraph categories_height_one'>
-        <p>Блок распродажи</p>
+        <p>Наименование</p>
         <input
           type="text"
           placeholder="Название Блока"
