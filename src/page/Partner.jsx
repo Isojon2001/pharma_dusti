@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LayoutGrid, Phone, Plus, Eye, Edit, Trash2 } from 'lucide-react';
+import { LayoutGrid, Phone, Plus, Eye,Users, Edit, Trash2 } from 'lucide-react';
 import SidebarItem from '../components/SidebarItem';
 import '../index.css';
 
@@ -47,10 +47,15 @@ useEffect(() => {
 
           <div className="sidebar-menu">
             <SidebarItem icon={LayoutGrid} label="Статистика" to="/dashboard" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Роли и права" to="/RoleAndRoot" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Partner" to="/Partner" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>📱</span>} label="Панель MobileApp" to="/mobile" />
-            <SidebarItem icon={Phone} label="Журнал звонков" to="/calls" />
+            <SidebarItem 
+              icon={() => <img src="./Icons-3.svg" alt="Роли и права" />} label="Роли и права" to="/RoleAndRoot" />
+            <SidebarItem icon={Users} label="Partner" to="/Partner" />
+            <SidebarItem icon={() => <img src="./Icons-4.svg" alt="MobileApp" />} label="Панель MobileApp" to="/mobile" />
+              <SidebarItem
+                icon={() => <img src="./call.svg" width={20} height={20} alt="Звонки" />}
+                label="Журнал звонков"
+                to="/calls"
+              />
           </div>
         </div>
 

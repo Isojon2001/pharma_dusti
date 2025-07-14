@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { LayoutGrid, Phone, Plus, Eye, Edit, Trash2 } from 'lucide-react';
+import { LayoutGrid, Phone, Plus, Users, Eye, Edit, Trash2 } from 'lucide-react';
 import SidebarItem from './SidebarItem';
+import { useNavigate, Outlet } from 'react-router-dom'
 import '../index.css';
 
 function RoleAndRoot() {
+  const navigate = useNavigate()
   const [user, setUser] = useState({});
   const [users, setUsers] = useState([]);
 
@@ -13,12 +15,12 @@ useEffect(() => {
     setUser(JSON.parse(stored));
   }
 
-  const token = localStorage.getItem('accessToken'); // 👈 получаем токен
+  const token = localStorage.getItem('accessToken'); 
 
-  fetch('http://api.dustipharma.tj:1212/api/v1/app/admin/users', {
+  fetch('http://api.dustipharma.tj:1212/api/v1/app/profile/users', {
     headers: {
-      'Authorization': `Bearer ${token}`,   // 👈 передаём токен
-      'Content-Type': 'application/json'     // 👈 на всякий случай
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     }
   })
     .then(res => {
@@ -47,10 +49,15 @@ useEffect(() => {
 
           <div className="sidebar-menu">
             <SidebarItem icon={LayoutGrid} label="Статистика" to="/dashboard" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Роли и права" to="/RoleAndRoot" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Partner" to="/Partner" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>📱</span>} label="Панель MobileApp" to="/mobile" />
-            <SidebarItem icon={Phone} label="Журнал звонков" to="/calls" />
+            <SidebarItem 
+              icon={() => <img src="./Icons-3.svg" alt="Роли и права" />} label="Роли и права" to="/RoleAndRoot" />
+            <SidebarItem icon={Users} label="Partner" to="/Partner" />
+            <SidebarItem icon={() => <img src="./Icons-4.svg" alt="MobileApp" />} label="Панель MobileApp" to="/mobile" />
+              <SidebarItem
+                icon={() => <img src="./call.svg" width={20} height={20} alt="Звонки" />}
+                label="Журнал звонков"
+                to="/calls"
+              />
           </div>
         </div>
 
@@ -75,7 +82,7 @@ useEffect(() => {
             <p>Добавьте сотрудников с полными правами администратора, ограничьте доступ по разделам</p>
           </div>
           <div className='root_button'>
-            <button>Добавить сотрудника <Plus /></button>
+            <button onClick={() => navigate('./add-employee')}>Добавить сотрудника <Plus /></button>
           </div>
         </div>
 
@@ -83,10 +90,9 @@ useEffect(() => {
           <table className="user-table">
             <thead>
               <tr>
-                <th>Вход</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Должность</th>
+                <th>№</th>
+                <th>Ф.И.О</th>
+                <th>Роль</th>
                 <th>Телефон</th>
                 <th>Действие</th>
               </tr>
@@ -96,12 +102,10 @@ useEffect(() => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{u['Наименование'] || '-'}</td>
-                  <td>{u['МенеджерКонтрагента'] || '-'}</td>
-                  <td>{u['БизнесРегион'] || '-'}</td>
+                  <td>{u['ВидКонтрагента'] || '-'}</td>
                   <td>{u['Телефон'] || '-'}</td>
                   <td style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
                     <Edit size={20} style={{ cursor: 'pointer' }} />
-                    <Eye size={20} style={{ cursor: 'pointer' }} />
                     <Trash2 size={20} color="red" style={{ cursor: 'pointer' }} />
                   </td>
                 </tr>
@@ -110,6 +114,7 @@ useEffect(() => {
           </table>
         </div>
       </main>
+      <Outlet />
     </div>
   );
 }

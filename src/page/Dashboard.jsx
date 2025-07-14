@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { LayoutGrid, Phone, MoreVertical } from 'lucide-react';
+import { LayoutGrid, Layers, Phone, Users, MoreVertical } from 'lucide-react';
 import SidebarItem from '../components/SidebarItem';
 import '../index.css';
 
 function Dashboard() {
+
   const [stats, setStats] = useState({});
   const navigate = useNavigate()
   const [user, setUser] = useState({});
@@ -73,10 +74,15 @@ const statItems = [
           </div>
           <div className="sidebar-menu">
             <SidebarItem icon={LayoutGrid} label="Статистика" to="/dashboard" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Роли и права" to="/RoleAndRoot" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Partner" to="/Partner" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>📱</span>} label="Панель MobileApp" to="/mobile" />
-            <SidebarItem icon={Phone} label="Журнал звонков" to="/calls" />
+            <SidebarItem 
+              icon={() => <img src="./Icons-3.svg" alt="Роли и права" />} label="Роли и права" to="/RoleAndRoot" />
+            <SidebarItem icon={Users} label="Partner" to="/Partner" />
+            <SidebarItem icon={() => <img src="./Icons-4.svg" alt="MobileApp" />} label="Панель MobileApp" to="/mobile" />
+              <SidebarItem
+                icon={() => <img src="./call.svg" width={20} height={20} alt="Звонки" />}
+                label="Журнал звонков"
+                to="/calls"
+              />
           </div>
         </div>
 

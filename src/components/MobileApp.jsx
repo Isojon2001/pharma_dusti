@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LayoutGrid, Phone } from 'lucide-react';
+import { LayoutGrid, Phone, Users } from 'lucide-react';
 import SidebarItem from './SidebarItem';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -14,7 +14,6 @@ function MobileApp() {
   const [message, setMessage] = useState('');
   const [showForm, setShowForm] = useState(false);
 
-  // Получение пользователя из localStorage
   useEffect(() => {
     const stored = localStorage.getItem('user');
     if (stored) {
@@ -22,7 +21,6 @@ function MobileApp() {
     }
   }, []);
 
-  // Получение всех категорий
   const fetchCategories = async () => {
     try {
       const token = localStorage.getItem('accessToken');
@@ -119,9 +117,15 @@ function MobileApp() {
 
           <div className="sidebar-menu">
             <SidebarItem icon={LayoutGrid} label="Статистика" to="/dashboard" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>🛡️</span>} label="Роли и права" to="/RoleAndRoot" />
-            <SidebarItem icon={() => <span style={{ fontSize: 20 }}>📱</span>} label="Панель MobileApp" to="/mobile" />
-            <SidebarItem icon={Phone} label="Журнал звонков" to="/calls" />
+            <SidebarItem 
+              icon={() => <img src="./Icons-3.svg" alt="Роли и права" />} label="Роли и права" to="/RoleAndRoot" />
+            <SidebarItem icon={Users} label="Partner" to="/Partner" />
+            <SidebarItem icon={() => <img src="./Icons-4.svg" alt="MobileApp" />} label="Панель MobileApp" to="/mobile" />
+              <SidebarItem
+                icon={() => <img src="./call.svg" width={20} height={20} alt="Звонки" />}
+                label="Журнал звонков"
+                to="/calls"
+              />
           </div>
         </div>
 

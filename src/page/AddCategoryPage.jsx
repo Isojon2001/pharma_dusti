@@ -50,9 +50,9 @@ function AddCategoryPage() {
     <div className='add-category-page'>
       <Breadcrumb
         className='category_breadcrumb'
-        items={[
+        items={[constiowdlaciowdliowdlac
           { label: 'PanelMobil', to: '/mobile' },
-          { label: 'Управление блоками' }, // текущая страница
+          { label: 'Управление блоками' },
         ]}
       />
     <div className="add-category-forms">

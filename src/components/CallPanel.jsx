@@ -5,7 +5,6 @@ function CallPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // ЗАМЕНИ ссылку ниже на свой актуальный ngrok URL!
     const NGROK_URL = 'https://446bfaaacf3b.ngrok-free.app';
 
     fetch(NGROK_URL)

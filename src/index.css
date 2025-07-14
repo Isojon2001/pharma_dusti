@@ -183,11 +183,19 @@ margin: 4px 0;
   text-decoration: none;
   transition: background 0.2s;
 }
-
+.sidebar-menu-items:hover{
+	padding: 5px;
+	background-color: #E9FBFB;
+}
+.sidebar-menu-items{
+	display: flex;
+	gap: 3px;
+	align-items: center;
+}
 .sidebar-link:hover {
 	color: 	#000;
+	padding: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
-	padding: 15px 5px;
   background-color: #E9FBFB;
 }
 
@@ -203,7 +211,7 @@ margin: 4px 0;
   background-color: #f4f4f4;
  }
 .content{
-	width: 100vh;
+	width: 100%;
   background-color: #f4f4f4;
 }
 .statistics_paragraph>h1{
@@ -455,6 +463,123 @@ margin: 4px 0;
   text-decoration: underline;
 }
 
+.add-form{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  background-color: #FFF;
+  padding: 15px;
+  height: 95vh;
+  margin-top: 20px;
+  gap: 20px;
+}
+.add-employee-page{
+	padding: 15px;
+	background-color: #EEE;
+	font-family: "Manrope", sans-serif;
+}
+.addEmployee_paragraph h1,
+.addEmployee_paragraph p{
+	color: #072C2C;
+	margin: 0;
+
+}
+.addEmployee_paragraph{
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #FFF;
+}
+.right-form h4,
+.left-form h4{
+	font-size: 18px;
+	padding: 10px;
+text-align: center;
+	background-color: #E9FBFB;
+}
+.left-form Label{
+font-size: 18px;
+font-weight: bold;
+margin-left: 10px;
+}
+.left-form inputn:nth-of-type(1){
+	border: none;
+}
+.left-form input{
+	width: 343px;
+	border: 1px solid #0B9D9F;
+	border-radius: 8px;
+	height: 52px;
+}
+.left-form {
+	font-family:"Manrope", sans-serif;
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+
+}
+
+.radio-form input {
+	font-weight: bold;
+}
+.radio-form p{
+	max-width: 410px;
+	color: #999999;
+}
+.radio-form {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.radio-option input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.custom-radio-check {
+  height: 22px;
+  width: 22px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.radio-option input[type="radio"]:checked + .custom-radio-check {
+  background-color: #0B9D9F;
+  color: white;
+}
+
+.radio-form h1{
+	font-size: 14px;
+}
+.radio-form Label{
+	display: flex;
+	gap: 10px;
+}
+.radio-form{
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+}
 
  @media (max-width: 1439px) {
 .content{

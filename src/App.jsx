@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import LoginPage from './page/LoginPage';
 import Dashboard from './page/Dashboard';
 import RoleAndRoot from './components/RoleAndRoot'
+import AddEmployee from './page/AddEmployee';
 import MobileApp from './components/MobileApp'
 import AddCategoryPage from './page/AddCategoryPage';
 import DetailedStats from './page/DetailedStats';
@@ -19,6 +20,7 @@ function App() {
       <Route path='/RoleAndRoot' element={<RoleAndRoot />} />
       <Route path='/docs' element={<SwaggerPage />} />
       <Route path='/calls' element={<CallPanel />} />
+      <Route path="/RoleAndRoot/add-employee" element={<AddEmployee />} />
       <Route path="/statistics/:type" element={<DetailedStats />} />
       <Route path="/add-category" element={<AddCategoryPage />} />
       <Route path="/Partner" element={<Partner />} />

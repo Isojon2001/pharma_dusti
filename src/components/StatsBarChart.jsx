@@ -16,7 +16,7 @@ function StatsBarChart({ type }) {
           `http://api.dustipharma.tj:1212/api/v1/app/admin/statistics/breakdown/${type}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setData(res.data.payload); // предполагается массив объектов
+        setData(res.data.payload);
       } catch (err) {
         console.error('Ошибка загрузки графика:', err);
       } finally {
